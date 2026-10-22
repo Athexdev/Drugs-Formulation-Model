@@ -1,0 +1,86 @@
+/* Animations */
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 170, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(0, 255, 170, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 170, 0); }
+}
+
+.pulsing {
+  animation: pulse 2s infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: scanline 2s linear infinite;
+  display: none;
+}
+
+.scanning .scan-line {
+  display: block;
+}
+
+/* Typing Effect */
+.typing {
+  overflow: hidden;
+  border-right: .15em solid var(--accent-cyan);
+  white-space: nowrap;
+  letter-spacing: .15em;
+  animation: 
+    typing 2s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--accent-cyan); }
+}
+
+/* View Transitions */
+.view-enter {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Data Stream Background */
+@keyframes backgroundScroll {
+  from { background-position: 0 0; }
+  to { background-position: 30px 30px; }
+}
+
+.hud-grid {
+  animation: backgroundScroll 10s linear infinite;
+}

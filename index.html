@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LIVE INTERACTIVE FORMULATION MODEL</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/src/css/styles.css">
+    <link rel="stylesheet" href="/src/css/components.css">
+    <link rel="stylesheet" href="/src/css/animations.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="theme-dark">
+    <!-- Background Elements -->
+    <div class="hud-background">
+      <div class="hud-grid"></div>
+      <div class="hud-glow"></div>
+    </div>
+
+    <!-- Application Shell -->
+    <div id="app" class="app-container">
+      
+      <!-- Top Bar -->
+      <header class="top-bar glass-panel">
+        <div class="top-bar-left">
+          <div class="system-title" style="font-size: 1.2rem;">LIVE INTERACTIVE FORMULATION MODEL</div>
+          <div class="system-subtitle">by Debesh Nayak</div>
+        </div>
+        
+        <div class="top-bar-right">
+          <div class="system-status">
+            <div class="status-dot pulsing"></div>
+            <span>SYSTEM ONLINE</span>
+          </div>
+          <div class="current-module-badge" id="top-current-module">CORE DASHBOARD</div>
+          <button class="icon-button" id="btn-search" title="Search (Ctrl+K)">
+            <i data-lucide="search"></i>
+          </button>
+          <button class="icon-button" id="btn-theme" title="Toggle Theme">
+            <i data-lucide="sun"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Layout -->
+      <div class="main-layout">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar glass-panel">
+          <nav class="sidebar-nav" id="sidebar-nav">
+            <button class="nav-item active" data-target="dashboard">
+              <i data-lucide="layout-dashboard"></i>
+              <span>JARVIS CORE</span>
+            </button>
+            <div class="nav-section">MODULES</div>
+            <button class="nav-item" data-target="parenteral">
+              <i data-lucide="syringe"></i>
+              <span>Parenteral</span>
+            </button>
+            <button class="nav-item" data-target="ophthalmic">
+              <i data-lucide="eye"></i>
+              <span>Ophthalmic</span>
+            </button>
+            <div class="nav-section">PROCESSES</div>
+            <button class="nav-item" data-target="formulation">
+              <i data-lucide="flask-conical"></i>
+              <span>Formulation</span>
+            </button>
+            <button class="nav-item" data-target="manufacturing">
+              <i data-lucide="factory"></i>
+              <span>Manufacturing</span>
+            </button>
+            <button class="nav-item" data-target="aseptic">
+              <i data-lucide="shield-alert"></i>
+              <span>Aseptic Processing</span>
+            </button>
+            <button class="nav-item" data-target="powders">
+              <i data-lucide="snowflake"></i>
+              <span>Sterile Powders</span>
+            </button>
+            <button class="nav-item" data-target="containers">
+              <i data-lucide="box"></i>
+              <span>Containers & Closures</span>
+            </button>
+            <div class="nav-section">ANALYSIS</div>
+            <button class="nav-item" data-target="qc">
+              <i data-lucide="microscope"></i>
+              <span>Quality Control</span>
+            </button>
+            <button class="nav-item" data-target="comparison">
+              <i data-lucide="arrow-left-right"></i>
+              <span>Comparison</span>
+            </button>
+            <div class="nav-section">SYSTEM</div>
+            <button class="nav-item" data-target="quiz">
+              <i data-lucide="brain-circuit"></i>
+              <span>Knowledge Check</span>
+            </button>
+            <button class="nav-item" data-target="summary">
+              <i data-lucide="terminal-square"></i>
+              <span>System Summary</span>
+            </button>
+          </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="content-area" id="main-content">
+          <!-- Views will be dynamically injected here -->
+        </main>
+        
+      </div>
+    </div>
+
+    <!-- Boot Sequence Overlay -->
+    <div id="boot-sequence" class="boot-overlay">
+      <div class="boot-content">
+        <div class="boot-title" style="font-size: 2.5rem; line-height: 1.2; text-align: center; margin-bottom: 0.5rem;">LIVE INTERACTIVE<br>FORMULATION MODEL</div>
+        <div class="boot-subtitle" style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--accent-cyan);">by Tulasi Devi Dutta Das</div>
+        <div class="boot-unit">INDUSTRIAL PHARMACY — UNIT 4</div>
+        
+        <div class="boot-terminal">
+          <div class="terminal-line typing">SYSTEM INITIALIZATION...</div>
+          <div class="terminal-checks" id="boot-checks">
+            <!-- Injected via JS -->
+          </div>
+          <div class="terminal-status" id="boot-status" style="display: none;">
+            SYSTEM STATUS: ONLINE
+          </div>
+        </div>
+        
+        <button id="btn-start-system" class="hud-button primary large" style="display: none;">
+          START SYSTEM
+        </button>
+      </div>
+    </div>
+
+    <!-- Command Palette Modal -->
+    <div id="command-palette" class="modal-overlay hidden">
+      <div class="command-dialog glass-panel">
+        <div class="command-input-wrapper">
+          <i data-lucide="search"></i>
+          <input type="text" id="command-input" placeholder="Search modules, concepts, QC tests... (Esc to close)" autocomplete="off">
+        </div>
+        <div class="command-results" id="command-results">
+          <!-- Results injected here -->
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Scripts -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
